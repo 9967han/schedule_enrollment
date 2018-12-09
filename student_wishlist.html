@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 20px;
+  }
+
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
+
+<script>
+  function add_class() {
+      var table = document.getElementById("sugang_wish_table");
+      var num_row = table.rows.length;
+      var row = table.insertRow(num_row);
+      // todo: Get class from database
+      // Example input --> change this part later
+      var cell_arr = ['<button onclick="delete_class(this)">삭제</button>',"소프트웨어실습4",2,35,40,"2-4학년","정윤경","[화]18:00~21:45"];
+      for(var i = 0; i < 8; i++){
+        var cell = row.insertCell(i);
+        cell.innerHTML = cell_arr[i];
+      }
+      total_credit();
+  }
+
+  function delete_class(btn) {
+      var row_num = btn.parentNode.parentNode.rowIndex;
+      var table = document.getElementById("sugang_wish_table");
+      table.deleteRow(row_num);
+      total_credit();
+  }
+
+  function total_credit() {
+      var table = document.getElementById("sugang_wish_table");
+      var sum_credit = 0;
+      for(var i = 1; i < table.rows.length; i++){
+        var credit = parseInt(table.rows[i].cells[3].innerHTML);
+        sum_credit += credit;
+      }
+      document.getElementById("total_credit").innerHTML = 'Wish List에 담은 학점: ' + sum_credit.toString() + ' / 27 학점';
+  }
+
+  function initialize() {
+      // todo: Get class from database
+      total_credit();
+  }
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+  <div class="topnav">
+    <a href="student_sugang.html">수강신청</a>
+    <a class="active" href="student_wishlist.html">Wish List</a>
+    <a href="student_set.html">수강신청내역</a>
+    <a href="student_time_table.html">시간표</a>
+    <a href="login.html">로그아웃</a>
+  </div>
+
+  <div id="total_credit"></div>
+  <br>
+
+  <div style="overflow-x:auto;">
+    <table id="sugang_wish_table">
+      <tr>
+        <th>수강신청</th>
+        <th>Wish List 삭제</th>
+        <th>교과목명</th>
+        <th>학점</th>
+        <th>신청인원</th>
+        <th>허용인원</th>
+        <th>학년</th>
+        <th>교강사</th>
+        <th>수업시간</th>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button onclick="delete_class(this)">삭제</button></td>
+        <td>Jill</td>
+        <td>2</td>
+        <td>50</td>
+        <td>50</td>
+        <td>1-4학년</td>
+        <td>50</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button onclick="delete_class(this)">삭제</button></td>
+        <td>Eve</td>
+        <td>2</td>
+        <td>94</td>
+        <td>94</td>
+        <td>3-4학년</td>
+        <td>94</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button onclick="delete_class(this)">삭제</button></td>
+        <td>Adam</td>
+        <td>3</td>
+        <td>67</td>
+        <td>67</td>
+        <td>2-4학년</td>
+        <td>67</td>
+        <td>67</td>
+      </tr>
+    </table>
+</div>
+
+</body>
+</html>

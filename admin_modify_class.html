@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+  }
+
+  th, td {
+      text-align: center;
+      padding: 8px;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 20px;
+  }
+
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
+
+<script>
+
+  function modify_class(btn) {
+      
+  }
+
+  function delete_class(btn) {
+      // todo: Delete the class from database --> update for every student as well
+      var row_num = btn.parentNode.parentNode.rowIndex;
+      var table = document.getElementById("sugang_wish_table");
+      table.deleteRow(row_num);
+      total_credit();
+  }
+
+  function initialize() {
+      // todo: Load class information from database.
+  }
+
+
+</script>
+
+</head>
+<body onload="initialize()">
+
+  <div class="topnav">
+    <a href="admin_register_student.html">학생 등록</a>
+    <a href="admin_register_class.html">수업 등록</a>
+    <a class="active" href="admin_modify_class.html">수업 수정</a>
+    <a href="admin_class_list.html">수업 목록</a>
+    <a href="admin_class_search">수업 검색</a>
+    <a href="login.html">로그아웃</a>
+  </div>
+
+
+  <div style="overflow-x:auto;">
+    <table id="class_table">
+      <tr>
+        <th>수업 수정</th>
+        <th>수업 삭제</th>
+        <th>교과목명</th>
+        <th>교강사</th>
+        <th>신청인원</th>
+        <th>허용인원</th>
+        <th>학점</th>
+        <th>학년</th>
+        <th>수업시간</th>
+      </tr>
+      <tr>
+        <th><button onclick="modify_class(this)">수정</button></th>
+        <th><button onclick="delete_class(this)">삭제</button></th>
+        <td>Jill</td>
+        <td>2</td>
+        <td>50</td>
+        <td>50</td>
+        <td>1-4학년</td>
+        <td>50</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <th><button onclick="modify_class(this)">수정</button></th>
+        <th><button onclick="delete_class(this)">삭제</button></th>
+        <td>Eve</td>
+        <td>2</td>
+        <td>94</td>
+        <td>94</td>
+        <td>3-4학년</td>
+        <td>94</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <th><button onclick="modify_class(this)">수정</button></th>
+        <th><button onclick="delete_class(this)">삭제</button></th>
+        <td>Adam</td>
+        <td>3</td>
+        <td>67</td>
+        <td>67</td>
+        <td>2-4학년</td>
+        <td>67</td>
+        <td>67</td>
+      </tr>
+    </table>
+
+</div>
+
+</body>
+</html>

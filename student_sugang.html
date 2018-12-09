@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+  }
+
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    margin-bottom: 20px;
+  }
+
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+</style>
+
+<script>
+
+  function filter_class() {
+      var table = document.getElementById("sugang_table");
+      var input = document.getElementById("class_input").value;
+      var grade = document.getElementById("grade_list").value;
+      for(var i = 1; i < table.rows.length; i++){
+        var class_name = table.rows[i].cells[1].innerHTML;
+        if(!class_name.includes(input))
+            table.rows[i].style.display="none";
+        else
+            table.rows[i].style.display="";
+      }
+      if(grade == 0){
+          for(var i = 1; i < table.rows.length; i++){
+              if(table.rows[i].style.display == "none")continue;
+              table.rows[i].style.display="";
+          }
+      }else{
+          for(var i = 1; i < table.rows.length; i++){
+              if(table.rows[i].style.display == "none")continue;
+              var target = false;
+              var grade_info = table.rows[i].cells[6].innerHTML;
+              if(grade_info.length == 3){
+                  var target_grade = grade_info[0];
+                  if(target_grade == grade)
+                      target = true;
+              }else{
+                  var target_grade_1 = grade_info[0];
+                  var target_grade_2 = grade_info[2];
+                  if(target_grade_1 <= grade && grade <= target_grade_2)
+                      target = true;
+              }
+              if(target == true)
+                  table.rows[i].style.display="";
+              else
+                  table.rows[i].style.display="none";
+          }
+      }
+  }
+
+  function initialize() {
+
+      // Load all class information from database
+  };
+</script>
+
+</head>
+<body onload="initialize()">
+
+  <div class="topnav">
+    <a class="active" href="student_sugang.html">수강신청</a>
+    <a href="student_wishlist.html">Wish List</a>
+    <a href="student_set.html">수강신청내역</a>
+    <a href="student_time_table.html">시간표</a>
+    <a href="login.html">로그아웃</a>
+  </div>
+
+  <input type="text" id="class_input" placeholder="수업 검색" onkeyup="filter_class()">
+  <button onclick="filter_class()">검색</button>
+
+  <select id="grade_list" onchange="filter_class()">
+    <option value="0">모든 학년</option>
+    <option value="1">1학년</option>
+    <option value="2">2학년</option>
+    <option value="3">3학년</option>
+    <option value="4">4학년</option>
+  </select>
+  <br><br>
+
+  <div style="overflow-x:auto;">
+    <table id="sugang_table">
+      <tr>
+        <th>수강신청</th>
+        <th>Wish List 추가</th>
+        <th>교과목명</th>
+        <th>학점</th>
+        <th>신청인원</th>
+        <th>허용인원</th>
+        <th>학년</th>
+        <th>교강사</th>
+        <th>수업시간</th>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button>추가</button></td>
+        <td>Jill</td>
+        <td>2</td>
+        <td>50</td>
+        <td>50</td>
+        <td>1-4학년</td>
+        <td>50</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button>추가</button></td>
+        <td>Eve</td>
+        <td>2</td>
+        <td>94</td>
+        <td>94</td>
+        <td>3-4학년</td>
+        <td>94</td>
+        <td>94</td>
+      </tr>
+      <tr>
+        <td><button>신청</button></td>
+        <td><button>추가</button></td>
+        <td>Adam</td>
+        <td>3</td>
+        <td>67</td>
+        <td>67</td>
+        <td>2-4학년</td>
+        <td>67</td>
+        <td>67</td>
+      </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
