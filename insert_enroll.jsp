@@ -82,7 +82,7 @@
                 stmt.close();
                 conn.close();
                 %>
-                <script> alert("수강신청 되었습니다"); /*location.replace("student_sugang.jsp")*/; </script> 
+                <script> alert("수강신청 되었습니다"); location.replace("student_sugang.jsp"); </script> 
                 <%
             }else if(min_grade <= grade && max_grade >= grade && time_flag == 1){
                 stmt.close();

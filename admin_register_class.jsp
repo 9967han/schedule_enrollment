@@ -95,7 +95,7 @@
     <a href="login.html">로그아웃</a>
   </div>
 
-  <form action="class_reg.jsp">
+  <form action="class_reg.jsp" method="post">
     <input type="text" id="class_name" name="cname" placeholder="교과목명">&nbsp;&nbsp;&nbsp;
     <input type="text" id="class_instructor" name="instructor" placeholder="교강사">&nbsp;&nbsp;&nbsp;
     <input type="text" id="class_available" name="max_student" placeholder="허용인원">&nbsp;&nbsp;&nbsp;

@@ -90,7 +90,7 @@
     <a href="admin_class_search.jsp">수업 검색</a>
     <a href="login.html">로그아웃</a>
   </div>
-  <form action="student_reg.jsp">
+  <form action="student_reg.jsp" method="post">
     <input type="text" id="student_id" name="SID" placeholder="학번" required>
     <input type="text" id="student_pwd" name="pwd" placeholder="비밀번호" required>
     <input type="text" id="student_name" name="name" placeholder="이름" required>

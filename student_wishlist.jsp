@@ -152,6 +152,11 @@
                     int c_time21 = rs.getInt("c_time21");
                     int c_time22 = rs.getInt("c_time22");
 
+                    int time_check11 = c_time11;
+                    int time_check12 = c_time12;
+                    int time_check21 = c_time21;
+                    int time_check22 = c_time22;
+
                     int day_1 = c_time11/10000;
                     int day_2 = c_time21/10000;
                     c_time11 = c_time11 - day_1*10000;
@@ -204,7 +209,7 @@
                         var table = document.getElementById("sugang_wish_table");
                         var row = table.insertRow(table.rows.length);
                         row.insertCell(0).innerHTML = '<form action= "insert_enroll.jsp">' +
-    '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>' +'<button>신청</button></form>';
+    '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>'+ '<input type="hidden" name="min_grade" value='+"'<%=min_grade%>'"+'</input>'+ '<input type="hidden" name="max_grade" value='+"'<%=max_grade%>'"+'</input>'+ '<input type="hidden" name="time_check11" value='+"'<%=time_check11%>'"+'</input>'+ '<input type="hidden" name="time_check12" value='+"'<%=time_check12%>'"+'</input>'+ '<input type="hidden" name="time_check21" value='+"'<%=time_check21%>'"+'</input>'+ '<input type="hidden" name="time_check22" value='+"'<%=time_check22%>'"+'</input>' +'<button>신청</button></form>';
                         row.insertCell(1).innerHTML = '<form action= "delete_wish.jsp">' +
     '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>' +'<button>삭제</button></form>';
                         row.insertCell(2).innerHTML = "<%=CNAME%>";

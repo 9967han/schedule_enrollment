@@ -205,7 +205,7 @@
                       <script>
                         var table = document.getElementById("sugang_set_table");
                         var row = table.insertRow(table.rows.length);
-                        row.insertCell(0).innerHTML = '<form action= "delete_enroll.jsp">' +
+                        row.insertCell(0).innerHTML = '<form action= "delete_enroll.jsp" method="post">' +
     '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>' +'<button>삭제</button></form>';
                         row.insertCell(1).innerHTML = "<%=CNAME%>";
                         row.insertCell(2).innerHTML = "<%=class_credit%>";

@@ -52,6 +52,10 @@
       var input = document.getElementById("class_input").value;
       var grade = document.getElementById("grade_list").value;
       for(var i = 1; i < table.rows.length; i++){
+        table.rows[i].style.display = "";
+      }
+      for(var i = 1; i < table.rows.length; i++){
+        if(table.rows[i].style.display == "none")continue;
         var class_name = table.rows[i].cells[1].innerHTML;
         if(!class_name.includes(input))
             table.rows[i].style.display="none";
@@ -106,7 +110,6 @@
   </div>
 
   <input type="text" id="class_input" placeholder="수업 검색" onkeyup="filter_class()">
-  <button onclick="filter_class()">검색</button>
 
   <select id="grade_list" onchange="filter_class()">
     <option value="0">모든 학년</option>
@@ -215,9 +218,9 @@
                     <script>
                           var table = document.getElementById("sugang_table");
                           var row = table.insertRow(table.rows.length);
-                          row.insertCell(0).innerHTML = '<form action= "insert_enroll.jsp">' +
+                          row.insertCell(0).innerHTML = '<form action= "insert_enroll.jsp" method="post">' +
     '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>'+ '<input type="hidden" name="min_grade" value='+"'<%=min_grade%>'"+'</input>'+ '<input type="hidden" name="max_grade" value='+"'<%=max_grade%>'"+'</input>'+ '<input type="hidden" name="time_check11" value='+"'<%=time_check11%>'"+'</input>'+ '<input type="hidden" name="time_check12" value='+"'<%=time_check12%>'"+'</input>'+ '<input type="hidden" name="time_check21" value='+"'<%=time_check21%>'"+'</input>'+ '<input type="hidden" name="time_check22" value='+"'<%=time_check22%>'"+'</input>' +'<button>신청</button></form>';
-                          row.insertCell(1).innerHTML = '<form action= "insert_wish.jsp">' +
+                          row.insertCell(1).innerHTML = '<form action= "insert_wish.jsp" method="post">' +
     '<input type="hidden" name="CNAME" value='+"'<%=CNAME%>'"+'</input>'+'<input type="hidden" name="instructor" value='+"'<%=instructor%>'"+'</input>' + '</input>'+'<input type="hidden" name="class_credit" value='+"'<%=class_credit%>'"+'</input>'+'<button>추가</button></form>';
                           row.insertCell(2).innerHTML = "<%=CNAME%>";
                           row.insertCell(3).innerHTML = "<%=class_credit%>";

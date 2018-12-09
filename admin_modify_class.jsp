@@ -48,7 +48,7 @@
 <script>
 
   function modify_class(btn) {
-      
+
   }
 
   function delete_class(btn) {
@@ -79,11 +79,11 @@
     <a href="login.html">로그아웃</a>
   </div>
     <div style="overflow-x:auto;">
-      <form action="modify_class.jsp">
+      <form action="modify_class.jsp" method="post">
       <table id="class_table">
         <tr contenteditable="false">
-          <th >수업 수정</th>
-          <th>수업 삭제</th>
+          <th >수업 삭제</th>
+          <th>수업 수정</th>
           <th>교과목명</th>
           <th>교강사</th>
           <th>강의실</th>
@@ -168,8 +168,8 @@
                           var table = document.getElementById("class_table");
                           var row = table.insertRow(table.rows.length);
 
-                          row.insertCell(0).innerHTML = '<form action="delete_class.jsp"><button name="temp" value="<%=cname%>:<%=instructor%>">삭제</button></form>';
-                          row.insertCell(1).innerHTML = ' <button name="temp" value="<%=cname%>:<%=instructor%>" type="submit">수정</button>';
+                          row.insertCell(0).innerHTML = '<button name="temp" value="<%=cname%>:<%=instructor%>" formaction="delete_class.jsp">삭제</button>';
+                          row.insertCell(1).innerHTML = '<button name="temp" value="<%=cname%>:<%=instructor%>" type="submit">수정</button>';
                           row.insertCell(2).innerHTML = '<input type="text" name="<%=cname%>:<%=instructor%>cname" size="10" value="<%=cname%>">';
                           row.insertCell(3).innerHTML = '<input type="text" name="<%=cname%>:<%=instructor%>instructor" size="5" value="<%=instructor%>">';
                           row.insertCell(4).innerHTML = '<input type="text" name="<%=cname%>:<%=instructor%>classroom" size="5" value="<%=classroom%>">';

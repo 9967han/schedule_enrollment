@@ -55,28 +55,39 @@
       var state = document.getElementById("state_list").value;
       var grade = document.getElementById("grade_list").value;
       for(var i = 1; i < table.rows.length; i++){
+        table.rows[i].style.display = "";
+      }
+
+
+      for(var i = 1; i < table.rows.length; i++){
         var class_name = table.rows[i].cells[2].innerHTML;  //index는 어떤 컬럼 값을 가져다 검색할지
-        if(!class_name.includes(input))
+        if(table.rows[i].style.display == "none")continue;
+        if(!class_name.includes(input)){
             table.rows[i].style.display="none";
+        }
         else
             table.rows[i].style.display="";
       }
       //instructor
       for(var i = 1; i < table.rows.length; i++){
         var instructor_name = table.rows[i].cells[1].innerHTML;  //index는 어떤 컬럼 값을 가져다 검색할지
-        if(!instructor_name.includes(inst))
+        if(table.rows[i].style.display == "none")continue;
+        if(!instructor_name.includes(inst)){
             table.rows[i].style.display="none";
+      }
         else
             table.rows[i].style.display="";
       }
       //state
       for(var i = 1; i < table.rows.length; i++){
+        if(table.rows[i].style.display == "none")continue;
         var class_name = table.rows[i].cells[0].innerHTML;  //index는 어떤 컬럼 값을 가져다 검색할지
         if(state == 0){
             //do nothing
         }
-        else if(!class_name.includes(state))
+        else if(!class_name.includes(state)){
             table.rows[i].style.display="none";
+        }
         else
             table.rows[i].style.display="";
       }
